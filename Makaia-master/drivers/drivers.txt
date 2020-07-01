@@ -1,0 +1,4 @@
+Find the chrome version and download the chromedriver first and put them in drivers folder !
+	version: https://chromedriver.chromium.org/
+	download locally: zip -> extract it -> chromedriver.exe
+	copy it into the drivers folder !!
