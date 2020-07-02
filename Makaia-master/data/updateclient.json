@@ -1,0 +1,19 @@
+{
+	"client_id": "id_value",
+	"client_name": "name_value",
+	"redirect_uris": [
+		"https://httpbin.org/get"
+	],
+	"response_types": [
+		"code",
+		"token",
+		"id_token"
+	],
+	"grant_types": [
+		"refresh_token",
+		"authorization_code",
+		"implicit"
+	],
+	"token_endpoint_auth_method": "client_secret_basic",
+	"application_type" : "native"
+}

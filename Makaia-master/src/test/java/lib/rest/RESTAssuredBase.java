@@ -81,7 +81,25 @@ public class RESTAssuredBase extends PreAndTest{
 				.body(jsonObject)
 				.post(URL);
 	}
+	
+	
+	public static Response postWithHeaderAndBodyAsFile(Map<String, String> headers,
+			File bodyFile, String URL) {
 
+		return setLogs()
+				.headers(headers)
+				.body(bodyFile)
+				.post(URL);
+	}
+
+	public static Response postWithHeaderAndBodyAsStringFile(Map<String, String> headers,
+			String bodyFile, String URL) {
+
+		return setLogs()
+				.headers(headers)
+				.body(bodyFile)
+				.post(URL);
+	}
 	public static Response postWithJsonAsBody(String jsonObject, String URL) {
 
 		return setLogs()
@@ -109,6 +127,9 @@ public class RESTAssuredBase extends PreAndTest{
 				.post(URL);
 	}
 	
+	
+	
+	
 	public static Response delete(String URL) {
 		return setLogs()
 				.when()
@@ -126,7 +147,7 @@ public class RESTAssuredBase extends PreAndTest{
 	}
 
 	public static Response deleteWithHeaderAndPathParamWithoutRequestBody(
-			Map<String, String> headers, String URL) throws Exception {
+			Map<String, String> headers, String URL){
 		return setLogs()
 				.when()
 				.headers(headers)
@@ -134,10 +155,33 @@ public class RESTAssuredBase extends PreAndTest{
 	}
 
 	public static Response putWithHeaderAndBodyParam(Map<String, String> headers,
-			JSONObject jsonObject, String URL) {
+			JSONObject jsonObject, String URL ) {
 
-		return RestAssured.given().headers(headers).contentType(getContentType()).request()
-				.body(jsonObject).when().put(URL);
+		return RestAssured
+				.given()
+				.log()
+				.all()
+				.headers(headers)
+				.contentType(getContentType())
+				.request()
+				.body(jsonObject)
+				.when()
+				.put(URL);
+	}
+	
+	public static Response putWithHeaderAndBodyParamfile(Map<String, String> headers,
+			String set, String URL,File bodyFile) {
+
+		return RestAssured
+				.given()
+				.log()
+				.all()
+				.headers(headers)
+				.contentType(getContentType())
+				.request()
+				.body(bodyFile)
+				.when()
+				.put(URL);
 	}
 	
 	public static ValidatableResponse enableResponseLog(Response response) {
