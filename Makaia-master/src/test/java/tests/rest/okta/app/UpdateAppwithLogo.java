@@ -1,6 +1,5 @@
-package tests.rest.okta.client.app;
+package tests.rest.okta.app;
 
-import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,7 +35,7 @@ public class UpdateAppwithLogo extends RESTAssuredBase{
 		String id = aid.get(0);
 		System.out.println(id);
 
-		File data = new File ("./sample.jpg");
+		
 		Response response =  RestAssured
 				.given()
 				.header("Authorization", "SSWS00TLzU6N8V0T7oIdHOmWi3dbXOk6CW18GN-80Sx3gT")
@@ -44,7 +43,7 @@ public class UpdateAppwithLogo extends RESTAssuredBase{
 				.header("_xsrfToken", "b36af29e560f9e8132828a776aa0642476e2e28c381378dfac787b288cd5246c")
 				.header("linkId","aln177a159h7Zf52X0g8")
 				.headers("Sec-Fetch-Dest","iframe")
-				.multiPart("file","./sample.jpg")
+				.multiPart("file","./logo.jpg")
 				.log()
 				.all()
 				.post("/admin/app/oidc_client/instance/"+id+"/edit-link")

@@ -1,4 +1,4 @@
-package tests.rest.okta.client.app;
+package tests.rest.okta.app;
 
 import java.io.File;
 import java.io.IOException;
