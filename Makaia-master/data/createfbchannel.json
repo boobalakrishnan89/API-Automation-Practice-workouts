@@ -1,0 +1,13 @@
+{
+  "type": "facebook_messenger",
+  "name": "name_text",
+  "mode": "production",
+  "webhook": {
+    "url": "https://my-project.com/webhooks",
+    "secret": "TsEW3ZmFKmpe2WltNfVmqtQie24"
+  },
+  "facebook_page": {
+    "id": "app_id",
+    "access_token": "fb_access_token"
+  }
+  }

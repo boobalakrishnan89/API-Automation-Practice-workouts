@@ -23,62 +23,67 @@ import io.restassured.RestAssured;
 import lib.utils.DataInputProvider;
 
 public class PreAndTest extends RESTAssuredBase{
-	
+
 	public String dataFileName, dataFileType;	
-	
+
 	public static String id;
-	
+	public static String OAUTH_TOKEN;
+	public static String App_id;
+	public static String access_token;
+
 	public static int  random() {
 		int random = 10000 + new Random(System.currentTimeMillis()).nextInt(20000);
 		return random;
 	}
-	 
+
 	@BeforeSuite
 	public void beforeSuite() {
 		startReport();
 	}
-	
+
 	@BeforeTest
 	public void beforeTest() {
-		 
+
 	}
-	
-	
+
+
 	@BeforeClass
 	public void beforeClass() {
 		startTestCase(testCaseName, testDescription);		
 	}
-	
-	
+
+
 	@BeforeMethod
 	public void beforeMethod() throws FileNotFoundException, IOException {
 		//for reports		
 		svcTest = startTestModule(nodes);
 		svcTest.assignAuthor(authors);
 		svcTest.assignCategory(category);
-		
+
 		Properties prop = new Properties();
 		prop.load(new FileInputStream(new File("./src/test/resources/config.properties")));
-		
-		//RestAssured.baseURI = "https://"+prop.getProperty("serverokta")+"/"+prop.getProperty("resourcesuser")+"/";
-		RestAssured.baseURI = "https://"+prop.getProperty("serverokta");
-		//RestAssured.authentication = RestAssured.basic(prop.getProperty("username"), prop.getProperty("password"));
 
+		//RestAssured.baseURI = "https://"+prop.getProperty("serverokta")+"/"+prop.getProperty("resourcesuser")+"/";
+		RestAssured.baseURI = "https://"+prop.getProperty("serveramio");
+		//RestAssured.authentication = RestAssured.basic(prop.getProperty("username"), prop.getProperty("password"));
+		OAUTH_TOKEN = prop.getProperty("amio");
+		App_id = prop.getProperty("fb_app_id");
+		access_token = prop.getProperty("fb_access_Tok");
 	}
 
 	@AfterMethod
 	public void afterMethod() {
-		
+
 	}
-	
+
 	@AfterClass
 	public void afterClass() {
-		
+
 	}
-	
+
 	@AfterTest
 	public void afterTest() {
-		
+
 	}
 
 	@AfterSuite
@@ -98,7 +103,7 @@ public class PreAndTest extends RESTAssuredBase{
 		}else {
 			return null;
 		}
-			
+
 	}
 
 	@Override
@@ -106,6 +111,6 @@ public class PreAndTest extends RESTAssuredBase{
 		return 0;
 	}	
 
-	
-	
+
+
 }

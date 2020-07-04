@@ -1,4 +1,4 @@
-package tests.rest;
+package tests.selenium;
 
 import java.io.File;
 import java.util.HashMap;
