@@ -9,9 +9,9 @@ import org.testng.annotations.Test;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
-import lib.rest.RESTAssuredBase;
+import lib.rest.PreAndTest;
 
-public class UpdateAppwithLogo extends RESTAssuredBase{
+public class UpdateAppwithLogo extends PreAndTest{
 
 
 

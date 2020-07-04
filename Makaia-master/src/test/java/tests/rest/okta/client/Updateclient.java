@@ -12,9 +12,9 @@ import org.testng.annotations.Test;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import lib.rest.RESTAssuredBase;
+import lib.rest.PreAndTest;
 
-public class Updateclient extends RESTAssuredBase{
+public class Updateclient extends PreAndTest{
 	
 
 	@BeforeTest
@@ -32,10 +32,13 @@ public class Updateclient extends RESTAssuredBase{
 	public void updateClient() throws IOException {	
 		Map<String, String> headers = new HashMap<String, String>() ;
 		headers.put("Authorization", "SSWS00TLzU6N8V0T7oIdHOmWi3dbXOk6CW18GN-80Sx3gT");
-		Response response = getWithHeader(headers,"clients");
+		Response response = getWithHeader(headers,"/oauth2/v1/clients");
 		List<String> cid = getContentsWithKey(response, "client_id");
-		String id=cid.get(0);
 		
+		id=cid.get(0);
+		response.prettyPrint();
+		System.out.println(cid);
+		 
 		//updating the client_name in the created clients 
 		String requestData = FileUtils.readFileToString(new File("./data/"+"updateclient.json"), StandardCharsets.UTF_8);
 		requestData = requestData.replaceAll("id_value",""+id+"").replaceAll("name_value", "MrBooo");
@@ -47,13 +50,14 @@ public class Updateclient extends RESTAssuredBase{
 				.body(requestData)
 				.when()
 				.put("/oauth2/v1/clients/"+id);
-		
 				// verifying the response
 				verifyResponseCode(response1, 200);
 				//get request
-				Response response2 = getWithHeader(headers,"/oauth2/v/1clients");
-				//verifying the updated client_name
-				verifyContentsWithKey(response2,"client_name","MrBooo");
+				
+				  Response response2 = getWithHeader(headers,"/oauth2/v/1clients"); 
+				  //verifying the updated client_name
+				  verifyContentsWithKey(response2,"client_name","MrBooo");
+				  
 	}
 } 
 	

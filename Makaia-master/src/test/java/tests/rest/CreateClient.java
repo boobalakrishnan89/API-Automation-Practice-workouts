@@ -6,9 +6,9 @@ import java.util.Map;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import io.restassured.response.Response;
-import lib.rest.RESTAssuredBase;
+import lib.rest.PreAndTest;
 
-public class CreateClient extends RESTAssuredBase{
+public class CreateClient extends PreAndTest{
 	public static String id;
 	public static String name;
 	Map<String, String> headers = new HashMap<String, String>() ;

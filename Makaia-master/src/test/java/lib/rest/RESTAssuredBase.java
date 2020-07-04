@@ -9,11 +9,11 @@ import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
-import io.restassured.specification.RequestLogSpecification;
 import io.restassured.specification.RequestSpecification;
+import lib.utils.HTMLReporter;
 import net.minidev.json.JSONObject;
 
-public class RESTAssuredBase extends PreAndTest{
+public class RESTAssuredBase extends HTMLReporter{
 
 	public static RequestSpecification setLogs() {
 		return RestAssured
@@ -256,6 +256,12 @@ public class RESTAssuredBase extends PreAndTest{
 		}else {
 			return null;
 		}
+	}
+
+	@Override
+	public long takeSnap() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

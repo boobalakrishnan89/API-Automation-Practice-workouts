@@ -6,9 +6,9 @@ import java.util.Map;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import io.restassured.response.Response;
-import lib.rest.RESTAssuredBase;
+import lib.rest.PreAndTest;
 
-public class Deleteclient extends RESTAssuredBase{
+public class Deleteclient extends PreAndTest{
 
 	@BeforeTest
 	public void setValues() {
@@ -27,7 +27,7 @@ public class Deleteclient extends RESTAssuredBase{
 		headers.put("Authorization", "SSWS00TLzU6N8V0T7oIdHOmWi3dbXOk6CW18GN-80Sx3gT");
 		Response response = getWithHeader(headers,"/oauth2/v1/clients");
 		List<String> cid = getContentsWithKey(response, "client_id");
-		String id=cid.get(0);
+		  id=cid.get(0);
 		//delete the created client id 
 		Response response1 = deleteWithHeaderAndPathParamWithoutRequestBody(headers,"/oauth2/v1/clients/"+id);
 		// verifying the response

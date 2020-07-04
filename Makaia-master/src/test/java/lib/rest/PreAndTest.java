@@ -5,8 +5,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.List;
 import java.util.Properties;
+import java.util.Random;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -17,23 +17,25 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Parameters;
 
-import com.aventstack.extentreports.ExtentTest;
 
 import io.restassured.RestAssured;
 import lib.utils.DataInputProvider;
-import lib.utils.HTMLReporter;
 
-public class PreAndTest extends HTMLReporter{
+public class PreAndTest extends RESTAssuredBase{
 	
 	public String dataFileName, dataFileType;	
 	
+	public static String id;
+	
+	public static int  random() {
+		int random = 10000 + new Random(System.currentTimeMillis()).nextInt(20000);
+		return random;
+	}
 	 
 	@BeforeSuite
 	public void beforeSuite() {
 		startReport();
-		
 	}
 	
 	@BeforeTest

@@ -12,9 +12,9 @@ import org.testng.annotations.Test;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import lib.rest.RESTAssuredBase;
+import lib.rest.PreAndTest;
 
-public class Updateclient extends RESTAssuredBase{
+public class Updateclient extends PreAndTest{
 	public static String id;
 	Map<String, String> headers = new HashMap<String, String>() ;
 

@@ -8,9 +8,9 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import io.restassured.response.Response;
-import lib.rest.RESTAssuredBase;
+import lib.rest.PreAndTest;
 
-public class VerifyAppInList extends RESTAssuredBase{
+public class VerifyAppInList extends PreAndTest{
 		
 		
 		

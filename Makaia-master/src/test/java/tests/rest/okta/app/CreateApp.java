@@ -11,9 +11,9 @@ import org.apache.commons.io.FileUtils;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import io.restassured.response.Response;
-import lib.rest.RESTAssuredBase;
+import lib.rest.PreAndTest;
 
-public class CreateApp extends RESTAssuredBase{
+public class CreateApp extends PreAndTest{
 	
 	
 	
