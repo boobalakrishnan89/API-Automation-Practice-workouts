@@ -30,6 +30,7 @@ public class PreAndTest extends RESTAssuredBase{
 	public static String OAUTH_TOKEN;
 	public static String App_id;
 	public static String access_token;
+	public static String viber_id;
 
 	public static int  random() {
 		int random = 10000 + new Random(System.currentTimeMillis()).nextInt(20000);
@@ -66,9 +67,10 @@ public class PreAndTest extends RESTAssuredBase{
 		//RestAssured.baseURI = "https://"+prop.getProperty("serverokta")+"/"+prop.getProperty("resourcesuser")+"/";
 		RestAssured.baseURI = "https://"+prop.getProperty("serveramio");
 		//RestAssured.authentication = RestAssured.basic(prop.getProperty("username"), prop.getProperty("password"));
-		OAUTH_TOKEN = prop.getProperty("amio");
+		OAUTH_TOKEN = prop.getProperty("amio_OAUTH_Token");
 		App_id = prop.getProperty("fb_app_id");
 		access_token = prop.getProperty("fb_access_Tok");
+		viber_id = prop.getProperty("viber_id");
 	}
 
 	@AfterMethod

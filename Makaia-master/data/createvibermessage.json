@@ -1,0 +1,13 @@
+
+{
+  "channel": {
+    "id": "channel_id"
+  },
+  "contact": {
+    "id": "contact_id"
+  },
+  "content": {
+    "type": "text",
+    "payload": "happy weekend! Stay safe  keep Learning !"
+  }
+}
