@@ -11,7 +11,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import io.restassured.response.Response;
 import lib.rest.PreAndTest;
-
+import static org.hamcrest.Matchers.hasItems;
 public class Scenario_Viber  extends PreAndTest{
 
 	@BeforeTest
@@ -41,9 +41,6 @@ public class Scenario_Viber  extends PreAndTest{
 		// validating the status code 
 		verifyResponseCode(getContactList, 200);
 		
-		
-		
-
 		// send text message using  viber id and contact id 
 
 		String messagetext = FileUtils.readFileToString(new File("./data/"+"createvibermessage.json"), StandardCharsets.UTF_8);
@@ -72,14 +69,10 @@ public class Scenario_Viber  extends PreAndTest{
 		
 
 		// validating the created  file message is available in the message list 
-
 		Response getviberMessageList = getWithHeader(headers,"/v1/channels/"+viber_id+"/contacts/"+contact_id+"/messages");
-		List<String> messageIdList = getContentsWithKey(getviberMessageList, "id");
-		for (String messageId : messageIdList) {
-			if(messageId.equalsIgnoreCase(filemsg_id)) {
-				System.out.println("File messages exist in the MessageList");
-			}
-		}
+		
+		//validating with hamcrest.Matchers 
+		getviberMessageList.then().assertThat().body("id",hasItems(filemsg_id,text_id ));
 		verifyResponseCode(getviberMessageList, 200);	
 	}
 }

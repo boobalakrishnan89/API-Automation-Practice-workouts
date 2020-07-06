@@ -1,17 +1,14 @@
 package tests.rest.amio.facebook;
 
+import static org.hamcrest.Matchers.hasItems;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-
 import org.apache.commons.io.FileUtils;
-import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-
 import io.restassured.response.Response;
 import lib.rest.PreAndTest;
 
@@ -55,16 +52,8 @@ public class Scenario_FB  extends PreAndTest{
 		// validating the status code 
 		verifyResponseCode(getChannelList, 200);
 		
-
-		// validating the created fb channel with  Channel list 
-		List<String> channelList = getContentsWithKey(getChannelList, "id");
-		for (String channel : channelList) {
-			if (channel.equalsIgnoreCase(id)) {
-				Assert.assertEquals(channel, id);
-				System.out.println("Creating and validating the FB channel is successful and the FB channel is Exist in the List");
-				break;
-			}
-		}
+		//validating with hamcrest.Matchers 
+		getChannelList.then().assertThat().body("id",hasItems(id));
 
 		//Deleting the created channel 
 		Response deleteChannel = deleteWithHeaderAndPathParamWithoutRequestBody(headers,"/v1/channels/"+id);
@@ -72,5 +61,4 @@ public class Scenario_FB  extends PreAndTest{
 		// validating the status code after deletion
 		verifyResponseCode(deleteChannel, 204);
 	}
-
 }

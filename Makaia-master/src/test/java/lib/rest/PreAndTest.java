@@ -65,7 +65,7 @@ public class PreAndTest extends RESTAssuredBase{
 		prop.load(new FileInputStream(new File("./src/test/resources/config.properties")));
 
 		//RestAssured.baseURI = "https://"+prop.getProperty("serverokta")+"/"+prop.getProperty("resourcesuser")+"/";
-		RestAssured.baseURI = "https://"+prop.getProperty("serveramio");
+		RestAssured.baseURI = "https://"+prop.getProperty("server");
 		//RestAssured.authentication = RestAssured.basic(prop.getProperty("username"), prop.getProperty("password"));
 		OAUTH_TOKEN = prop.getProperty("amio_OAUTH_Token");
 		App_id = prop.getProperty("fb_app_id");
