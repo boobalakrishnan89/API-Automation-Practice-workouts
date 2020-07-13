@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+	<test name="client">
+		<classes>
+			<class name="tests.rest.okta.client.CreateClient" />
+			<class name="tests.rest.okta.client.Updateclient" />
+			<class name="tests.rest.okta.client.Deleteclient" />
+		</classes>
+	</test> <!-- Test -->
+</suite> <!-- Suite -->

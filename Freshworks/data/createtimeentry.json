@@ -1,0 +1,11 @@
+{
+  "time_entry": {
+    "is_logged": true,
+    "duration": 7200,
+    "note": "Stuff",
+    "started_at": "s_at",
+    "client_id": "c_id",
+    "project_id": "p_id",
+    "service_id": "5373811"
+  }
+}
