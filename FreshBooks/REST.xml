@@ -4,6 +4,7 @@
 	<test name="client">
 		<classes>
 			<class name="test.rest.freshwork.Scenario1" />
+			<class name="test.rest.freshwork.Scenario2" />
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->

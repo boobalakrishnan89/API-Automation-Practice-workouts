@@ -20,14 +20,13 @@ public class Scenario1 extends PreAndTest {
 	String started_at = timestamp.toInstant().toString(); 
 	
 	@BeforeTest
-	public void setValue() {
+	public void setValues() {
 		testCaseName = " Create/update/delete a time Entry";
 		testDescription = " Creating updating deleting  a time Entry";
 		nodes = "fresh_Books";
 		authors = "BK";
 		category = "API";
-		dataFileName = "createtimeentry";
-		dataFileType = "JSON";
+	 
 	}
 
 	@Test(priority = 1)
@@ -36,11 +35,12 @@ public class Scenario1 extends PreAndTest {
 
 		String updatejson = FileUtils.readFileToString(new File("./data/" + "createtimeentry.json"),StandardCharsets.UTF_8);
 		updatejson = updatejson.replaceAll("c_id", client_id).replaceAll("p_id", project_id) .replaceAll("s_at",started_at);
+		
 		Response createTimeEntry = postWithBodyAsStringFileAndUrl(updatejson,"/timetracking/business/" + bussiness_id + "/time_entries");
-		createTimeEntry.prettyPrint();
+		
 		String entry = getContentWithKey(createTimeEntry, "time_entry.id");
-		System.out.println(entry);
 		id = Integer.parseInt(entry);
+		
 		verifyResponseCode(createTimeEntry, 200);
 	}
 
@@ -48,7 +48,9 @@ public class Scenario1 extends PreAndTest {
 	public void getentries() {
 		 
 		Response getallTimeEntry = get("/timetracking/business/" + bussiness_id + "/time_entries");
+		
 		getallTimeEntry.then().assertThat().body("time_entries.id", hasItem(id));
+		
 		verifyResponseCode(getallTimeEntry, 200);
 	}
 

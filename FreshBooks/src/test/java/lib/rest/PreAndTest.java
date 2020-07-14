@@ -31,6 +31,7 @@ public class PreAndTest extends RESTAssuredBase{
 	public static String client_id;
 	public static String project_id;
 	public static String service_id;
+	public static String account_id;
 
 	public static int  random() {
 		int random = 10000 + new Random(System.currentTimeMillis()).nextInt(20000);
@@ -72,6 +73,7 @@ public class PreAndTest extends RESTAssuredBase{
 		client_id = prop.getProperty("client_id");
 		project_id = prop.getProperty("project_id");
 		service_id = prop.getProperty("service_id");
+		account_id= prop.getProperty("account_id");
 	}
 
 	@AfterMethod
