@@ -1,0 +1,11 @@
+
+{
+ "email": "testcustomers@yopmail.com",
+  "amount": "50000",
+  "reference": "ref_id",
+  "currency": "NGN",
+  "callback_url": "http://url.com",
+  "metadata": {
+  	"cancel_action": "http://cancelurl.com"
+  }
+}
